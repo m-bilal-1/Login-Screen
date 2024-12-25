@@ -1,0 +1,107 @@
+//Verification Screen
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:login_page/home_screen.dart';
+import 'package:login_page/login.dart';
+
+class Verification_code extends StatefulWidget {
+  const Verification_code({super.key});
+
+  @override
+  State<Verification_code> createState() => _Verification_codeState();
+}
+
+class _Verification_codeState extends State<Verification_code> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/as.png"), fit: BoxFit.cover)),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: [
+            Container(
+              child: Padding(
+                padding: const EdgeInsets.only(left: 35, top: 160),
+                child: Text(
+                  'Verification',
+                  style: TextStyle(fontSize: 45, color: Colors.white),
+                ),
+              ),
+            ),
+            SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).size.height * 0.4,
+                  right: 35,
+                  left: 35,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    TextField(
+                      obscureText: true,
+                      keyboardType: TextInputType.number,
+                      decoration: InputDecoration(
+                          fillColor: Colors.grey.shade100,
+                          hintText: 'Enter 4-Digit password',
+                          filled: true,
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(11))),
+                    ),
+                    Row(
+                      children: [
+                        Icon(Icons.access_time_filled,
+                        size: 34,),
+                        Text('You may receieve SMS notification from us for\nsecurity and login purpose'),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Column(
+
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        ElevatedButton(
+                            onPressed: () {
+                              Text('james_web');
+                            },
+                            child: Text(
+                              'Send again verification code',
+                              style: TextStyle(
+                                  color: Colors.brown,
+                            )
+                            ),
+                        ),
+                        ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => home_screen()));
+                            },
+                            child: Text('Login',style: TextStyle(color: Colors.black),)),
+                        ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => login()));
+                            },
+                            child: Text('Return to login screen',style: TextStyle(color: Colors.brown),)
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
